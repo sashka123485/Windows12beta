@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 12 Beta</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Загрузочный экран Windows 12 -->
+    <div class="boot-screen" id="boot-screen">
+        <div class="windows-logo">
+            <div class="windows-logo-container">
+                <div class="windows-square square1"></div>
+                <div class="windows-square square2"></div>
+                <div class="windows-square square3"></div>
+                <div class="windows-square square4"></div>
+            </div>
+            <div class="windows-text">
+                <div class="windows-version">Windows 12</div>
+                <div class="windows-edition">Beta Edition</div>
+            </div>
+        </div>
+        
+        <div class="boot-loader">
+            <div class="loader-dots">
+                <div class="dot dot1"></div>
+                <div class="dot dot2"></div>
+                <div class="dot dot3"></div>
+                <div class="dot dot4"></div>
+                <div class="dot dot5"></div>
+            </div>
+        </div>
+        
+        <div class="boot-progress-container">
+            <div class="boot-progress">
+                <div class="boot-progress-bar" id="boot-progress-bar"></div>
+            </div>
+            <div class="boot-status">
+                <div class="boot-text" id="boot-text">Подготовка к работе</div>
+                <div class="boot-percentage" id="boot-percentage">0%</div>
+            </div>
+        </div>
+        
+        <div class="boot-footer">
+            <div class="manufacturer">Microsoft Corporation</div>
+            <div class="copyright">© 2024 Microsoft. Все права защищены.</div>
+        </div>
+    </div>
+
+    <!-- Экран выключения -->
+    <div class="shutdown-screen" id="shutdown-screen">
+        <div class="shutdown-content">
+            <div class="shutdown-logo">
+                <div class="windows-logo-container">
+                    <div class="windows-square square1"></div>
+                    <div class="windows-square square2"></div>
+                    <div class="windows-square square3"></div>
+                    <div class="windows-square square4"></div>
+                </div>
+                <div class="shutdown-text" id="shutdown-text">Завершение работы...</div>
+            </div>
+            
+            <button class="power-on-button" id="power-on-button">
+                <i class="fas fa-power-off"></i>
+                <span>Включить компьютер</span>
+            </button>
+        </div>
+        
+        <div class="shutdown-footer">
+            <div class="hint">Нажмите кнопку питания для включения</div>
+            <div class="watermark">Windows 12 Beta • Build 26000.1</div>
+        </div>
+    </div>
+
+    <!-- Диалоговое окно -->
+    <div class="dialog" id="shutdown-dialog">
+        <div class="dialog-title">
+            <i class="fas fa-power-off"></i>
+            <span>Завершение работы</span>
+        </div>
+        <div class="dialog-message">Вы уверены, что хотите выключить компьютер?</div>
+        <div class="dialog-buttons">
+            <button class="dialog-button secondary" id="shutdown-cancel">Отмена</button>
+            <button class="dialog-button primary" id="shutdown-confirm">Выключить</button>
+        </div>
+    </div>
+
+    <div class="dialog" id="restart-dialog">
+        <div class="dialog-title">
+            <i class="fas fa-redo"></i>
+            <span>Перезагрузка</span>
+        </div>
+        <div class="dialog-message">Вы уверены, что хотите перезагрузить компьютер?</div>
+        <div class="dialog-buttons">
+            <button class="dialog-button secondary" id="restart-cancel">Отмена</button>
+            <button class="dialog-button primary" id="restart-confirm">Перезагрузить</button>
+        </div>
+    </div>
+
+    <!-- Рабочий стол -->
+    <div class="desktop" id="desktop">
+        <div class="desktop-background">
+            <div class="wallpaper">
+                <div class="wallpaper-overlay"></div>
+                <div class="wallpaper-content">
+                    <div class="windows-badge">
+                        <div class="windows-logo-container small">
+                            <div class="windows-square square1"></div>
+                            <div class="windows-square square2"></div>
+                            <div class="windows-square square3"></div>
+                            <div class="windows-square square4"></div>
+                        </div>
+                        <div class="badge-text">Windows 12</div>
+                        <div class="badge-subtext">Beta • Build 26000.1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="desktop-icons">
+            <div class="desktop-icon" data-app="notepad">
+                <div class="icon-wrapper">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <span>Блокнот</span>
+            </div>
+            <div class="desktop-icon" data-app="calculator">
+                <div class="icon-wrapper">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <span>Калькулятор</span>
+            </div>
+            <div class="desktop-icon" data-app="file-explorer">
+                <div class="icon-wrapper">
+                    <i class="fas fa-folder"></i>
+                </div>
+                <span>Проводник</span>
+            </div>
+            <div class="desktop-icon" data-app="edge-browser">
+                <div class="icon-wrapper">
+                    <i class="fab fa-edge"></i>
+                </div>
+                <span>Microsoft Edge</span>
+            </div>
+            <div class="desktop-icon" data-app="settings">
+                <div class="icon-wrapper">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <span>Параметры</span>
+            </div>
+            <div class="desktop-icon" data-app="store">
+                <div class="icon-wrapper">
+                    <i class="fas fa-store"></i>
+                </div>
+                <span>Microsoft Store</span>
+            </div>
+        </div>
+        
+        <!-- Окна приложений -->
+        <div id="notepad" class="window" style="top: 100px; left: 200px; width: 500px; height: 400px;">
+            <div class="window-header">
+                <div class="window-title">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Блокнот</span>
+                </div>
+                <div class="window-controls">
+                    <button class="window-control minimize"><i class="fas fa-minus"></i></button>
+                    <button class="window-control maximize"><i class="far fa-square"></i></button>
+                    <button class="window-control close"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="app-toolbar">
+                    <button class="toolbar-btn"><i class="fas fa-file"></i> Файл</button>
+                    <button class="toolbar-btn"><i class="fas fa-edit"></i> Правка</button>
+                    <button class="toolbar-btn"><i class="fas fa-eye"></i> Вид</button>
+                    <button class="toolbar-btn"><i class="fas fa-font"></i> Формат</button>
+                    <button class="toolbar-btn"><i class="fas fa-question-circle"></i> Справка</button>
+                </div>
+                <textarea placeholder="Введите текст..." autofocus>Добро пожаловать в Windows 12 Beta!
+
+Это демонстрационная версия операционной системы.
+
+Функции:
+• Современный интерфейс
+• Приложения Windows
+• Настраиваемый рабочий стол
+• Эмуляция системы Windows 12</textarea>
+            </div>
+        </div>
+        
+        <div id="calculator" class="window" style="top: 150px; left: 300px; width: 320px; height: 420px;">
+            <div class="window-header">
+                <div class="window-title">
+                    <i class="fas fa-calculator"></i>
+                    <span>Калькулятор</span>
+                </div>
+                <div class="window-controls">
+                    <button class="window-control minimize"><i class="fas fa-minus"></i></button>
+                    <button class="window-control maximize"><i class="far fa-square"></i></button>
+                    <button class="window-control close"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="calculator-display">
+                    <div class="calc-history"></div>
+                    <div class="calc-input" id="calc-input">0</div>
+                </div>
+                <div class="calculator-buttons">
+                    <button class="calc-btn memory">MC</button>
+                    <button class="calc-btn memory">MR</button>
+                    <button class="calc-btn memory">M+</button>
+                    <button class="calc-btn memory">M-</button>
+                    <button class="calc-btn memory">MS</button>
+                    
+                    <button class="calc-btn operator">%</button>
+                    <button class="calc-btn operator">CE</button>
+                    <button class="calc-btn operator">C</button>
+                    <button class="calc-btn operator">⌫</button>
+                    
+                    <button class="calc-btn operator">1/x</button>
+                    <button class="calc-btn operator">x²</button>
+                    <button class="calc-btn operator">√</button>
+                    <button class="calc-btn operator">÷</button>
+                    
+                    <button class="calc-btn">7</button>
+                    <button class="calc-btn">8</button>
+                    <button class="calc-btn">9</button>
+                    <button class="calc-btn operator">×</button>
+                    
+                    <button class="calc-btn">4</button>
+                    <button class="calc-btn">5</button>
+                    <button class="calc-btn">6</button>
+                    <button class="calc-btn operator">−</button>
+                    
+                    <button class="calc-btn">1</button>
+                    <button class="calc-btn">2</button>
+                    <button class="calc-btn">3</button>
+                    <button class="calc-btn operator">+</button>
+                    
+                    <button class="calc-btn">±</button>
+                    <button class="calc-btn">0</button>
+                    <button class="calc-btn">.</button>
+                    <button class="calc-btn equals">=</button>
+                </div>
+                <div class="calculator-mode">
+                    <button class="mode-btn active">Обычный</button>
+                    <button class="mode-btn">Инженерный</button>
+                    <button class="mode-btn">Программист</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="file-explorer" class="window" style="top: 120px; left: 400px; width: 600px; height: 400px;">
+            <div class="window-header">
+                <div class="window-title">
+                    <i class="fas fa-folder"></i>
+                    <span>Проводник</span>
+                </div>
+                <div class="window-controls">
+                    <button class="window-control minimize"><i class="fas fa-minus"></i></button>
+                    <button class="window-control maximize"><i class="far fa-square"></i></button>
+                    <button class="window-control close"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="explorer-toolbar">
+                    <button class="explorer-btn"><i class="fas fa-arrow-left"></i></button>
+                    <button class="explorer-btn"><i class="fas fa-arrow-right"></i></button>
+                    <button class="explorer-btn"><i class="fas fa-arrow-up"></i></button>
+                    <button class="explorer-btn"><i class="fas fa-sync-alt"></i></button>
+                    <div class="explorer-path">
+                        <i class="fas fa-home"></i>
+                        <span>Этот компьютер</span>
+                    </div>
+                    <button class="explorer-btn search"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="explorer-sidebar">
+                    <div class="sidebar-item active">
+                        <i class="fas fa-home"></i>
+                        <span>Быстрый доступ</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-desktop"></i>
+                        <span>Рабочий стол</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-download"></i>
+                        <span>Загрузки</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-folder"></i>
+                        <span>Документы</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-image"></i>
+                        <span>Изображения</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-music"></i>
+                        <span>Музыка</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-video"></i>
+                        <span>Видео</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-hdd"></i>
+                        <span>Этот компьютер</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Сеть</span>
+                    </div>
+                </div>
+                <div class="explorer-content">
+                    <div class="files-grid">
+                        <div class="file-item">
+                            <div class="file-icon"><i class="fas fa-folder"></i></div>
+                            <div class="file-name">Рабочий стол</div>
+                        </div>
+                        <div class="file-item">
+                            <div class="file-icon"><i class="fas fa-folder"></i></div>
+                            <div class="file-name">Загрузки</div>
+                        </div>
+                        <div class="file-item">
+                            <div class="file-icon"><i class="fas fa-folder"></i></div>
+                            <div class="file-name">Документы</div>
+                        </div>
+                        <div class="file-item">
+                            <div class="file-icon"><i class="fas fa-folder"></i></div>
+                            <div class="file-name">Изображения</div>
+                        </div>
+                        <div class="file-item">
+                            <div class="file-icon"><i class="fas fa-folder"></i></div>
+                            <div class="file-name">Музыка</div>
+                        </div>
+                        <div class="file-item">
+                            <div class="file-icon"><i class="fas fa-folder"></i></div>
+                            <div class="file-name">Видео</div>
+                        </div>
+                        <div class="file-item">
+                            <div class="file-icon"><i class="fas fa-hdd"></i></div>
+                            <div class="file-name">Локальный диск (C:)</div>
+                        </div>
+                        <div class="file-item">
+                            <div class="file-icon"><i class="fab fa-microsoft"></i></div>
+                            <div class="file-name">Windows</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Microsoft Edge -->
+        <div id="edge-browser" class="window" style="top: 50px; left: 150px; width: 900px; height: 600px;">
+            <div class="window-header">
+                <div class="window-title">
+                    <i class="fab fa-edge"></i>
+                    <span>Microsoft Edge</span>
+                </div>
+                <div class="window-controls">
+                    <button class="window-control minimize"><i class="fas fa-minus"></i></button>
+                    <button class="window-control maximize"><i class="far fa-square"></i></button>
+                    <button class="window-control close"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="browser-tabs">
+                <div class="browser-tab active" data-tab="1">
+                    <i class="fab fa-microsoft"></i>
+                    <span>Новая вкладка</span>
+                    <span class="browser-tab-close" data-tab="1"><i class="fas fa-times"></i></span>
+                </div>
+                <button class="browser-tab-add" id="browser-new-tab">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="browser-content-area">
+                <div class="browser-toolbar">
+                    <div class="browser-nav-buttons">
+                        <button class="browser-button" id="browser-back"><i class="fas fa-arrow-left"></i></button>
+                        <button class="browser-button" id="browser-forward"><i class="fas fa-arrow-right"></i></button>
+                        <button class="browser-button" id="browser-refresh"><i class="fas fa-redo"></i></button>
+                    </div>
+                    <div class="browser-url-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="text" class="browser-url" id="browser-url" value="https://www.microsoft.com">
+                        <button class="browser-go" id="browser-go"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <div class="browser-actions">
+                        <button class="browser-action-btn"><i class="fas fa-star"></i></button>
+                        <button class="browser-action-btn"><i class="fas fa-download"></i></button>
+                        <button class="browser-action-btn"><i class="fas fa-ellipsis-h"></i></button>
+                    </div>
+                </div>
+                <div class="browser-newtab">
+                    <div class="newtab-logo">
+                        <i class="fab fa-edge edge-logo"></i>
+                        <div class="newtab-title">Microsoft Edge</div>
+                    </div>
+                    <div class="newtab-search">
+                        <input type="text" placeholder="Поиск в Интернете или введите адрес">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="newtab-quicklinks">
+                        <div class="quicklink" data-url="https://www.microsoft.com">
+                            <div class="quicklink-icon"><i class="fab fa-microsoft"></i></div>
+                            <div class="quicklink-name">Microsoft</div>
+                        </div>
+                        <div class="quicklink" data-url="https://www.bing.com">
+                            <div class="quicklink-icon"><i class="fab fa-searchengin"></i></div>
+                            <div class="quicklink-name">Bing</div>
+                        </div>
+                        <div class="quicklink" data-url="https://outlook.live.com">
+                            <div class="quicklink-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="quicklink-name">Outlook</div>
+                        </div>
+                        <div class="quicklink" data-url="https://onedrive.live.com">
+                            <div class="quicklink-icon"><i class="fas fa-cloud"></i></div>
+                            <div class="quicklink-name">OneDrive</div>
+                        </div>
+                        <div class="quicklink" data-url="https://www.youtube.com">
+                            <div class="quicklink-icon"><i class="fab fa-youtube"></i></div>
+                            <div class="quicklink-name">YouTube</div>
+                        </div>
+                        <div class="quicklink" data-url="https://github.com">
+                            <div class="quicklink-icon"><i class="fab fa-github"></i></div>
+                            <div class="quicklink-name">GitHub</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="browser-status" id="browser-status">
+                    <span id="browser-status-text">Готово</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Меню Пуск -->
+        <div class="start-menu" id="start-menu">
+            <div class="start-menu-header">
+                <div class="start-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Поиск">
+                </div>
+            </div>
+            <div class="start-menu-content">
+                <div class="start-pinned">
+                    <div class="start-section">
+                        <div class="section-title">Закреплено</div>
+                        <div class="start-apps-grid">
+                            <div class="start-app" data-app="notepad">
+                                <div class="start-app-icon"><i class="fas fa-file-alt"></i></div>
+                                <div class="start-app-name">Блокнот</div>
+                            </div>
+                            <div class="start-app" data-app="calculator">
+                                <div class="start-app-icon"><i class="fas fa-calculator"></i></div>
+                                <div class="start-app-name">Калькулятор</div>
+                            </div>
+                            <div class="start-app" data-app="file-explorer">
+                                <div class="start-app-icon"><i class="fas fa-folder"></i></div>
+                                <div class="start-app-name">Проводник</div>
+                            </div>
+                            <div class="start-app" data-app="edge-browser">
+                                <div class="start-app-icon"><i class="fab fa-edge"></i></div>
+                                <div class="start-app-name">Microsoft Edge</div>
+                            </div>
+                            <div class="start-app" data-app="settings">
+                                <div class="start-app-icon"><i class="fas fa-cog"></i></div>
+                                <div class="start-app-name">Параметры</div>
+                            </div>
+                            <div class="start-app" data-app="store">
+                                <div class="start-app-icon"><i class="fas fa-store"></i></div>
+                                <div class="start-app-name">Microsoft Store</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="start-recommended">
+                    <div class="start-section">
+                        <div class="section-title">Рекомендуемое</div>
+                        <div class="recommended-items">
+                            <div class="recommended-item">
+                                <div class="item-icon"><i class="fas fa-file-alt"></i></div>
+                                <div class="item-info">
+                                    <div class="item-name">Документ 1</div>
+                                    <div class="item-time">Сегодня</div>
+                                </div>
+                            </div>
+                            <div class="recommended-item">
+                                <div class="item-icon"><i class="fas fa-image"></i></div>
+                                <div class="item-info">
+                                    <div class="item-name">Изображение.jpg</div>
+                                    <div class="item-time">Вчера</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="start-menu-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-name">Пользователь</div>
+                </div>
+                <div class="start-power">
+                    <button class="power-btn" id="power-restart">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <button class="power-btn" id="power-shutdown">
+                        <i class="fas fa-power-off"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Панель задач -->
+    <div class="taskbar" id="taskbar">
+        <div class="taskbar-left">
+            <button class="start-button" id="start-button">
+                <div class="windows-icon">
+                    <div class="windows-square small sq1"></div>
+                    <div class="windows-square small sq2"></div>
+                    <div class="windows-square small sq3"></div>
+                    <div class="windows-square small sq4"></div>
+                </div>
+            </button>
+            <button class="taskbar-search">
+                <i class="fas fa-search"></i>
+                <span>Поиск</span>
+            </button>
+            <div class="taskbar-apps" id="taskbar-apps">
+                <!-- Здесь будут отображаться открытые приложения -->
+            </div>
+        </div>
+        <div class="taskbar-right">
+            <div class="system-tray">
+                <button class="tray-icon"><i class="fas fa-chevron-up"></i></button>
+                <button class="tray-icon"><i class="fas fa-wifi"></i></button>
+                <button class="tray-icon"><i class="fas fa-volume-up"></i></button>
+                <button class="tray-icon"><i class="fas fa-battery-full"></i></button>
+            </div>
+            <div class="taskbar-time">
+                <div class="time" id="time">12:00</div>
+                <div class="date" id="date">Пн, 1 янв.</div>
+            </div>
+            <div class="taskbar-showdesktop"></div>
+        </div>
+    </div>
+
+    <!-- Уведомление -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="notification-content">
+            <div class="notification-title">Windows 12 Beta</div>
+            <div class="notification-message">Система загружена</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
