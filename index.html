@@ -156,6 +156,12 @@
                 </div>
                 <span>Microsoft Store</span>
             </div>
+            <div class="desktop-icon" data-app="paint">
+                <div class="icon-wrapper">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <span>Paint</span>
+            </div>
         </div>
         
         <!-- Окна приложений -->
@@ -167,19 +173,19 @@
                 </div>
                 <div class="window-controls">
                     <button class="window-control minimize"><i class="fas fa-minus"></i></button>
-                    <button class="window-control maximize"><i class="far fa-square"></i></button>
+                    <button class="window-control maximize"><i class="fas fa-square"></i></button>
                     <button class="window-control close"><i class="fas fa-times"></i></button>
                 </div>
             </div>
             <div class="window-content">
                 <div class="app-toolbar">
-                    <button class="toolbar-btn"><i class="fas fa-file"></i> Файл</button>
-                    <button class="toolbar-btn"><i class="fas fa-edit"></i> Правка</button>
-                    <button class="toolbar-btn"><i class="fas fa-eye"></i> Вид</button>
-                    <button class="toolbar-btn"><i class="fas fa-font"></i> Формат</button>
-                    <button class="toolbar-btn"><i class="fas fa-question-circle"></i> Справка</button>
+                    <button class="toolbar-btn" id="notepad-new"><i class="fas fa-file"></i> Создать</button>
+                    <button class="toolbar-btn" id="notepad-open"><i class="fas fa-folder-open"></i> Открыть</button>
+                    <button class="toolbar-btn" id="notepad-save"><i class="fas fa-save"></i> Сохранить</button>
+                    <button class="toolbar-btn" id="notepad-print"><i class="fas fa-print"></i> Печать</button>
+                    <button class="toolbar-btn" id="notepad-help"><i class="fas fa-question-circle"></i> Справка</button>
                 </div>
-                <textarea placeholder="Введите текст..." autofocus>Добро пожаловать в Windows 12 Beta!
+                <textarea placeholder="Введите текст..." autofocus id="notepad-textarea">Добро пожаловать в Windows 12 Beta!
 
 Это демонстрационная версия операционной системы.
 
@@ -199,56 +205,56 @@
                 </div>
                 <div class="window-controls">
                     <button class="window-control minimize"><i class="fas fa-minus"></i></button>
-                    <button class="window-control maximize"><i class="far fa-square"></i></button>
+                    <button class="window-control maximize"><i class="fas fa-square"></i></button>
                     <button class="window-control close"><i class="fas fa-times"></i></button>
                 </div>
             </div>
             <div class="window-content">
                 <div class="calculator-display">
-                    <div class="calc-history"></div>
+                    <div class="calc-history" id="calc-history"></div>
                     <div class="calc-input" id="calc-input">0</div>
                 </div>
                 <div class="calculator-buttons">
-                    <button class="calc-btn memory">MC</button>
-                    <button class="calc-btn memory">MR</button>
-                    <button class="calc-btn memory">M+</button>
-                    <button class="calc-btn memory">M-</button>
-                    <button class="calc-btn memory">MS</button>
+                    <button class="calc-btn memory" data-action="mc">MC</button>
+                    <button class="calc-btn memory" data-action="mr">MR</button>
+                    <button class="calc-btn memory" data-action="m+">M+</button>
+                    <button class="calc-btn memory" data-action="m-">M-</button>
+                    <button class="calc-btn memory" data-action="ms">MS</button>
                     
-                    <button class="calc-btn operator">%</button>
-                    <button class="calc-btn operator">CE</button>
-                    <button class="calc-btn operator">C</button>
-                    <button class="calc-btn operator">⌫</button>
+                    <button class="calc-btn operator" data-action="%">%</button>
+                    <button class="calc-btn operator" data-action="ce">CE</button>
+                    <button class="calc-btn operator" data-action="c">C</button>
+                    <button class="calc-btn operator" data-action="backspace">⌫</button>
                     
-                    <button class="calc-btn operator">1/x</button>
-                    <button class="calc-btn operator">x²</button>
-                    <button class="calc-btn operator">√</button>
-                    <button class="calc-btn operator">÷</button>
+                    <button class="calc-btn operator" data-action="1/x">1/x</button>
+                    <button class="calc-btn operator" data-action="x²">x²</button>
+                    <button class="calc-btn operator" data-action="√">√</button>
+                    <button class="calc-btn operator" data-action="÷">÷</button>
                     
-                    <button class="calc-btn">7</button>
-                    <button class="calc-btn">8</button>
-                    <button class="calc-btn">9</button>
-                    <button class="calc-btn operator">×</button>
+                    <button class="calc-btn" data-number="7">7</button>
+                    <button class="calc-btn" data-number="8">8</button>
+                    <button class="calc-btn" data-number="9">9</button>
+                    <button class="calc-btn operator" data-action="×">×</button>
                     
-                    <button class="calc-btn">4</button>
-                    <button class="calc-btn">5</button>
-                    <button class="calc-btn">6</button>
-                    <button class="calc-btn operator">−</button>
+                    <button class="calc-btn" data-number="4">4</button>
+                    <button class="calc-btn" data-number="5">5</button>
+                    <button class="calc-btn" data-number="6">6</button>
+                    <button class="calc-btn operator" data-action="−">−</button>
                     
-                    <button class="calc-btn">1</button>
-                    <button class="calc-btn">2</button>
-                    <button class="calc-btn">3</button>
-                    <button class="calc-btn operator">+</button>
+                    <button class="calc-btn" data-number="1">1</button>
+                    <button class="calc-btn" data-number="2">2</button>
+                    <button class="calc-btn" data-number="3">3</button>
+                    <button class="calc-btn operator" data-action="+">+</button>
                     
-                    <button class="calc-btn">±</button>
-                    <button class="calc-btn">0</button>
-                    <button class="calc-btn">.</button>
-                    <button class="calc-btn equals">=</button>
+                    <button class="calc-btn operator" data-action="±">±</button>
+                    <button class="calc-btn" data-number="0">0</button>
+                    <button class="calc-btn operator" data-action=".">.</button>
+                    <button class="calc-btn equals" data-action="=">=</button>
                 </div>
                 <div class="calculator-mode">
-                    <button class="mode-btn active">Обычный</button>
-                    <button class="mode-btn">Инженерный</button>
-                    <button class="mode-btn">Программист</button>
+                    <button class="mode-btn active" data-mode="normal">Обычный</button>
+                    <button class="mode-btn" data-mode="scientific">Инженерный</button>
+                    <button class="mode-btn" data-mode="programmer">Программист</button>
                 </div>
             </div>
         </div>
@@ -261,94 +267,63 @@
                 </div>
                 <div class="window-controls">
                     <button class="window-control minimize"><i class="fas fa-minus"></i></button>
-                    <button class="window-control maximize"><i class="far fa-square"></i></button>
+                    <button class="window-control maximize"><i class="fas fa-square"></i></button>
                     <button class="window-control close"><i class="fas fa-times"></i></button>
                 </div>
             </div>
             <div class="window-content">
                 <div class="explorer-toolbar">
-                    <button class="explorer-btn"><i class="fas fa-arrow-left"></i></button>
-                    <button class="explorer-btn"><i class="fas fa-arrow-right"></i></button>
-                    <button class="explorer-btn"><i class="fas fa-arrow-up"></i></button>
-                    <button class="explorer-btn"><i class="fas fa-sync-alt"></i></button>
+                    <button class="explorer-btn" id="explorer-back"><i class="fas fa-arrow-left"></i></button>
+                    <button class="explorer-btn" id="explorer-forward"><i class="fas fa-arrow-right"></i></button>
+                    <button class="explorer-btn" id="explorer-up"><i class="fas fa-arrow-up"></i></button>
+                    <button class="explorer-btn" id="explorer-refresh"><i class="fas fa-sync-alt"></i></button>
                     <div class="explorer-path">
                         <i class="fas fa-home"></i>
-                        <span>Этот компьютер</span>
+                        <span id="current-path">Этот компьютер</span>
                     </div>
-                    <button class="explorer-btn search"><i class="fas fa-search"></i></button>
+                    <button class="explorer-btn" id="explorer-search"><i class="fas fa-search"></i></button>
                 </div>
                 <div class="explorer-sidebar">
-                    <div class="sidebar-item active">
+                    <div class="sidebar-item active" data-path="home">
                         <i class="fas fa-home"></i>
                         <span>Быстрый доступ</span>
                     </div>
-                    <div class="sidebar-item">
+                    <div class="sidebar-item" data-path="desktop">
                         <i class="fas fa-desktop"></i>
                         <span>Рабочий стол</span>
                     </div>
-                    <div class="sidebar-item">
+                    <div class="sidebar-item" data-path="downloads">
                         <i class="fas fa-download"></i>
                         <span>Загрузки</span>
                     </div>
-                    <div class="sidebar-item">
+                    <div class="sidebar-item" data-path="documents">
                         <i class="fas fa-folder"></i>
                         <span>Документы</span>
                     </div>
-                    <div class="sidebar-item">
+                    <div class="sidebar-item" data-path="pictures">
                         <i class="fas fa-image"></i>
                         <span>Изображения</span>
                     </div>
-                    <div class="sidebar-item">
+                    <div class="sidebar-item" data-path="music">
                         <i class="fas fa-music"></i>
                         <span>Музыка</span>
                     </div>
-                    <div class="sidebar-item">
+                    <div class="sidebar-item" data-path="videos">
                         <i class="fas fa-video"></i>
                         <span>Видео</span>
                     </div>
-                    <div class="sidebar-item">
+                    <div class="sidebar-item" data-path="computer">
                         <i class="fas fa-hdd"></i>
                         <span>Этот компьютер</span>
                     </div>
-                    <div class="sidebar-item">
+                    <div class="sidebar-item" data-path="network">
                         <i class="fas fa-network-wired"></i>
                         <span>Сеть</span>
                     </div>
                 </div>
                 <div class="explorer-content">
-                    <div class="files-grid">
-                        <div class="file-item">
-                            <div class="file-icon"><i class="fas fa-folder"></i></div>
-                            <div class="file-name">Рабочий стол</div>
-                        </div>
-                        <div class="file-item">
-                            <div class="file-icon"><i class="fas fa-folder"></i></div>
-                            <div class="file-name">Загрузки</div>
-                        </div>
-                        <div class="file-item">
-                            <div class="file-icon"><i class="fas fa-folder"></i></div>
-                            <div class="file-name">Документы</div>
-                        </div>
-                        <div class="file-item">
-                            <div class="file-icon"><i class="fas fa-folder"></i></div>
-                            <div class="file-name">Изображения</div>
-                        </div>
-                        <div class="file-item">
-                            <div class="file-icon"><i class="fas fa-folder"></i></div>
-                            <div class="file-name">Музыка</div>
-                        </div>
-                        <div class="file-item">
-                            <div class="file-icon"><i class="fas fa-folder"></i></div>
-                            <div class="file-name">Видео</div>
-                        </div>
-                        <div class="file-item">
-                            <div class="file-icon"><i class="fas fa-hdd"></i></div>
-                            <div class="file-name">Локальный диск (C:)</div>
-                        </div>
-                        <div class="file-item">
-                            <div class="file-icon"><i class="fab fa-microsoft"></i></div>
-                            <div class="file-name">Windows</div>
-                        </div>
+                    <div class="files-grid" id="files-grid">
+                        <!-- Файлы будут загружаться динамически -->
                     </div>
                 </div>
             </div>
@@ -363,7 +338,7 @@
                 </div>
                 <div class="window-controls">
                     <button class="window-control minimize"><i class="fas fa-minus"></i></button>
-                    <button class="window-control maximize"><i class="far fa-square"></i></button>
+                    <button class="window-control maximize"><i class="fas fa-square"></i></button>
                     <button class="window-control close"><i class="fas fa-times"></i></button>
                 </div>
             </div>
@@ -390,19 +365,19 @@
                         <button class="browser-go" id="browser-go"><i class="fas fa-arrow-right"></i></button>
                     </div>
                     <div class="browser-actions">
-                        <button class="browser-action-btn"><i class="fas fa-star"></i></button>
-                        <button class="browser-action-btn"><i class="fas fa-download"></i></button>
-                        <button class="browser-action-btn"><i class="fas fa-ellipsis-h"></i></button>
+                        <button class="browser-action-btn" id="browser-favorites"><i class="fas fa-star"></i></button>
+                        <button class="browser-action-btn" id="browser-downloads"><i class="fas fa-download"></i></button>
+                        <button class="browser-action-btn" id="browser-menu"><i class="fas fa-ellipsis-h"></i></button>
                     </div>
                 </div>
-                <div class="browser-newtab">
+                <div class="browser-newtab" id="browser-newtab">
                     <div class="newtab-logo">
                         <i class="fab fa-edge edge-logo"></i>
                         <div class="newtab-title">Microsoft Edge</div>
                     </div>
                     <div class="newtab-search">
-                        <input type="text" placeholder="Поиск в Интернете или введите адрес">
-                        <button><i class="fas fa-search"></i></button>
+                        <input type="text" placeholder="Поиск в Интернете или введите адрес" id="newtab-search-input">
+                        <button id="newtab-search-btn"><i class="fas fa-search"></i></button>
                     </div>
                     <div class="newtab-quicklinks">
                         <div class="quicklink" data-url="https://www.microsoft.com">
@@ -437,12 +412,57 @@
             </div>
         </div>
 
+        <!-- Paint -->
+        <div id="paint" class="window" style="top: 180px; left: 250px; width: 700px; height: 500px;">
+            <div class="window-header">
+                <div class="window-title">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Paint</span>
+                </div>
+                <div class="window-controls">
+                    <button class="window-control minimize"><i class="fas fa-minus"></i></button>
+                    <button class="window-control maximize"><i class="fas fa-square"></i></button>
+                    <button class="window-control close"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="app-toolbar">
+                    <button class="toolbar-btn" id="paint-file"><i class="fas fa-file"></i> Файл</button>
+                    <button class="toolbar-btn" id="paint-home"><i class="fas fa-home"></i> Главная</button>
+                    <button class="toolbar-btn" id="paint-view"><i class="fas fa-eye"></i> Вид</button>
+                </div>
+                <div class="paint-toolbar">
+                    <button class="paint-tool active" data-tool="brush"><i class="fas fa-paint-brush"></i></button>
+                    <button class="paint-tool" data-tool="pencil"><i class="fas fa-pencil-alt"></i></button>
+                    <button class="paint-tool" data-tool="line"><i class="fas fa-minus"></i></button>
+                    <button class="paint-tool" data-tool="rectangle"><i class="far fa-square"></i></button>
+                    <button class="paint-tool" data-tool="circle"><i class="far fa-circle"></i></button>
+                    <button class="paint-tool" data-tool="fill"><i class="fas fa-fill-drip"></i></button>
+                    <button class="paint-tool" data-tool="text"><i class="fas fa-font"></i></button>
+                    <button class="paint-tool" data-tool="eraser"><i class="fas fa-eraser"></i></button>
+                </div>
+                <div class="paint-colors">
+                    <div class="color active" style="background: #000000;" data-color="#000000"></div>
+                    <div class="color" style="background: #ff0000;" data-color="#ff0000"></div>
+                    <div class="color" style="background: #00ff00;" data-color="#00ff00"></div>
+                    <div class="color" style="background: #0000ff;" data-color="#0000ff"></div>
+                    <div class="color" style="background: #ffff00;" data-color="#ffff00"></div>
+                    <div class="color" style="background: #ff00ff;" data-color="#ff00ff"></div>
+                    <div class="color" style="background: #00ffff;" data-color="#00ffff"></div>
+                    <div class="color" style="background: #ffffff; border: 1px solid #ccc;" data-color="#ffffff"></div>
+                </div>
+                <div class="paint-canvas-container">
+                    <canvas id="paint-canvas" width="680" height="380"></canvas>
+                </div>
+            </div>
+        </div>
+
         <!-- Меню Пуск -->
         <div class="start-menu" id="start-menu">
             <div class="start-menu-header">
                 <div class="start-search">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Поиск">
+                    <input type="text" placeholder="Поиск" id="start-search-input">
                 </div>
             </div>
             <div class="start-menu-content">
@@ -474,6 +494,10 @@
                                 <div class="start-app-icon"><i class="fas fa-store"></i></div>
                                 <div class="start-app-name">Microsoft Store</div>
                             </div>
+                            <div class="start-app" data-app="paint">
+                                <div class="start-app-icon"><i class="fas fa-paint-brush"></i></div>
+                                <div class="start-app-name">Paint</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -481,17 +505,17 @@
                     <div class="start-section">
                         <div class="section-title">Рекомендуемое</div>
                         <div class="recommended-items">
-                            <div class="recommended-item">
+                            <div class="recommended-item" data-action="notepad">
                                 <div class="item-icon"><i class="fas fa-file-alt"></i></div>
                                 <div class="item-info">
-                                    <div class="item-name">Документ 1</div>
+                                    <div class="item-name">Новый документ</div>
                                     <div class="item-time">Сегодня</div>
                                 </div>
                             </div>
-                            <div class="recommended-item">
+                            <div class="recommended-item" data-action="paint">
                                 <div class="item-icon"><i class="fas fa-image"></i></div>
                                 <div class="item-info">
-                                    <div class="item-name">Изображение.jpg</div>
+                                    <div class="item-name">Новый рисунок</div>
                                     <div class="item-time">Вчера</div>
                                 </div>
                             </div>
@@ -500,7 +524,7 @@
                 </div>
             </div>
             <div class="start-menu-footer">
-                <div class="user-profile">
+                <div class="user-profile" id="user-profile">
                     <div class="user-avatar">
                         <i class="fas fa-user"></i>
                     </div>
@@ -529,7 +553,7 @@
                     <div class="windows-square small sq4"></div>
                 </div>
             </button>
-            <button class="taskbar-search">
+            <button class="taskbar-search" id="taskbar-search-btn">
                 <i class="fas fa-search"></i>
                 <span>Поиск</span>
             </button>
@@ -539,16 +563,16 @@
         </div>
         <div class="taskbar-right">
             <div class="system-tray">
-                <button class="tray-icon"><i class="fas fa-chevron-up"></i></button>
-                <button class="tray-icon"><i class="fas fa-wifi"></i></button>
-                <button class="tray-icon"><i class="fas fa-volume-up"></i></button>
-                <button class="tray-icon"><i class="fas fa-battery-full"></i></button>
+                <button class="tray-icon" id="tray-up"><i class="fas fa-chevron-up"></i></button>
+                <button class="tray-icon" id="tray-wifi"><i class="fas fa-wifi"></i></button>
+                <button class="tray-icon" id="tray-volume"><i class="fas fa-volume-up"></i></button>
+                <button class="tray-icon" id="tray-battery"><i class="fas fa-battery-full"></i></button>
             </div>
-            <div class="taskbar-time">
+            <div class="taskbar-time" id="taskbar-time">
                 <div class="time" id="time">12:00</div>
                 <div class="date" id="date">Пн, 1 янв.</div>
             </div>
-            <div class="taskbar-showdesktop"></div>
+            <div class="taskbar-showdesktop" id="show-desktop"></div>
         </div>
     </div>
 
@@ -559,7 +583,7 @@
         </div>
         <div class="notification-content">
             <div class="notification-title">Windows 12 Beta</div>
-            <div class="notification-message">Система загружена</div>
+            <div class="notification-message" id="notification-message">Система загружена</div>
         </div>
     </div>
 
